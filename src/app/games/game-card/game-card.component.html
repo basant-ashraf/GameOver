@@ -1,0 +1,25 @@
+<div class="content shadow" (mouseenter)="on(vid)" (mouseleave)="off(vid)" [routerLink]="['/game-details',item.id]">
+    <div class="image position-relative rounded-top">
+        <video class="w-100 h-100 rounded-top position-absolute start-0 top-0 bottom-0" loop muted preload="none" #vid>
+            <source src="https://www.freetogame.com/g/{{item.id}}/videoplayback.webm" type="video/webm">
+        </video>
+        <img [src]="item.thumbnail" class="w-100  rounded-top" alt="">
+    </div>
+    <div class="desc p-3 rounded-bottom">
+        <h2 class="text-capitalize h4">{{item.title.length > 16 ? (item.title | limitLetters :12 ):(item.title | limitLetters :20)}}</h2>
+        <span class="d-block text-uppercase fw-bold text-white free rounded-2">free</span>
+        <p >{{item.short_description  | limitLetters : 25}}</p>
+        <div class="icons d-flex justify-content-between">
+            <div class="left">
+                <div class="plus">
+                    <i class="fa-solid fa-plus fa-xs"></i>
+                </div>
+            </div>
+            <div class="right d-flex">
+                <span class="badge d-block text-capitalize me-2">{{item.genre}}</span>
+                <i class="fa-brands fa-windows" *ngIf="item.platform=='PC (Windows)'"></i>
+                <i class="fa-solid fa-window-maximize" *ngIf="item.platform=='Web Browser'"></i>
+            </div>
+        </div>
+    </div>
+</div>

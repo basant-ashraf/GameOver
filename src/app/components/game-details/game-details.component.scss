@@ -1,0 +1,128 @@
+@import "../../../styles.scss";
+
+@keyframes slide {
+    to {
+        background-position: 20vw;
+    }
+}
+
+.common-before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: rgba($color: $fontColor, $alpha: 0.5);
+    position: absolute;
+}
+.contain {
+    // background: linear-gradient(rgba(39, 43, 48, 0.8), #272b30);
+    background-image: linear-gradient(
+            90deg,
+            #292e33 0%,
+            rgba(35, 46, 46, 0.1) 16.15%,
+            rgba(35, 46, 46, 0.1) 80.21%,
+            #292e33 100%
+        ),
+        linear-gradient(180deg, rgb(39, 43, 48) 0%, rgba(0, 0, 0, 0.58) 33.85%, #292e33 100%);
+    &:hover {
+        video {
+            opacity: 1;
+        }
+    }
+    .screenshot {
+        position: relative;
+        &::before {
+            @extend .common-before;
+            top: -30px;
+        }
+    }
+    .requirements {
+        position: relative;
+        &::before {
+            @extend .common-before;
+            top: -20px;
+        }
+    }
+    .info {
+        position: relative;
+        &::before {
+            @extend .common-before;
+            top: -20px;
+        }
+    }
+}
+.read-more {
+    color: $color;
+    width: fit-content;
+    &:hover {
+        cursor: pointer;
+        color: #fff !important;
+    }
+    transition: color 0.3s;
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    -ms-transition: color 0.3s;
+    -o-transition: color 0.3s;
+}
+
+.content {
+    .free {
+        background-color: $lightBgColor;
+        padding: 10px;
+    }
+    a {
+        padding: 10px 30px;
+        background-color: $color;
+        position: relative;
+        &:hover {
+            background-image: linear-gradient(
+                to right,
+                #e7484f,
+                #e7484f 16.65%,
+                #f68b1d 16.65%,
+                #f68b1d 33.3%,
+                #fced00 33.3%,
+                #fced00 49.95%,
+                #009e4f 49.95%,
+                #009e4f 66.6%,
+                #00aac3 66.6%,
+                #00aac3 83.25%,
+                #732982 83.25%,
+                #732982 100%,
+                #e7484f 100%
+            );
+            animation: slide 4s linear infinite;
+            -webkit-animation: slide 4s linear infinite;
+            font-weight: bolder;
+        }
+    }
+    video {
+        opacity: 0;
+        transition: opacity 0.5s;
+        -webkit-transition: opacity 0.5s;
+        -moz-transition: opacity 0.5s;
+        -ms-transition: opacity 0.5s;
+        -o-transition: opacity 0.5s;
+    }
+}
+.sticky {
+    position: sticky;
+    top: 70px;
+}
+
+.info {
+    p {
+        color: #fff;
+    }
+}
+
+.requirements {
+    p {
+        font-size: 14px;
+        color: $darkFontColor;
+    }
+}
+
+// .test {
+//     animation: slide 4s linear infinite;
+//     -webkit-animation: slide 4s linear infinite;
+// }

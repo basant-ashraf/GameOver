@@ -1,0 +1,115 @@
+@import "../../../styles.scss";
+@import url("https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@1&display=swap");
+
+.navbar {
+  .dropdown-toggle {
+    i {
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+    }
+  }
+  .dropdown-toggle[aria-expanded="true"] {
+    i {
+      transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+    }
+  }
+  background-color: $bgColor !important;
+  .nav-item {
+    &:hover {
+      background-color: $bgColor !important;
+      i {
+        color: blue;
+      }
+    }
+    .register-btn {
+      color: $color !important;
+      border-color: $color !important;
+      &:hover {
+        color: #fff;
+        border-color: #fff !important;
+        background-color: transparent;
+      }
+    }
+    .logout {
+      color: $color !important;
+      border-color: $color !important;
+      &:hover {
+        color: #fff;
+        border-color: red !important;
+        background-color: red;
+      }
+    }
+
+    .register {
+      background-color: $color;
+      color: #fff !important;
+    }
+
+    .nav-link {
+      color: $fontColor;
+      text-transform: capitalize;
+      &:hover {
+        color: #fff !important;
+      }
+    }
+    .test {
+      color: #fff !important;
+      font-weight: bold;
+    }
+    .dropdown-toggle::after {
+      display: none;
+    }
+    i {
+      color: $color;
+    }
+  }
+  .dropdown-menu {
+    background-color: $lightBgColor;
+    .dropdown-item {
+      color: $fontColor !important;
+      text-transform: capitalize;
+      font-size: 14px;
+      &:hover {
+        background-color: $bgColor;
+        color: #fff !important;
+      }
+    }
+  }
+  .navbar-brand {
+    font-family: "Xanh Mono", monospace;
+    img {
+      filter: drop-shadow(1px 1px 3px $color);
+      -webkit-filter: drop-shadow(1px 1px 3px $color);
+    }
+  }
+
+  .icon {
+    color: $color;
+  }
+  .navbar-toggler {
+    border-color: $color !important;
+    padding: 10px 12px;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      border-color: #fff;
+      background-color: $color;
+      i {
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .nav-link {
+    text-align: center;
+  }
+}

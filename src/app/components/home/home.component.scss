@@ -1,0 +1,237 @@
+@import "../../../styles.scss";
+
+.header {
+    h1 {
+        span {
+            color: $color;
+        }
+    }
+    p {
+        color: $darkFontColor;
+    }
+    background-image: url("../../../assets/images/head.png");
+    background-position: center center;
+    background-size: cover;
+    background-color: rgba($color: #1c1e22, $alpha: 1);
+    .browse{
+        border-color: #fff;
+        color: #fff;
+        &:hover {
+            background-color: $color;
+            color: #fff;
+            border-color: $color;
+        }
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+    }
+    .start{
+        background-color: $color;
+        border-color: $color;
+        &:hover{
+            background-color: transparent;
+            border-color: #fff;
+        }
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+}
+}
+
+.btn {
+    width: fit-content;
+}
+
+.common-free {
+    font-size: 10px;
+    background-color: $color;
+    padding: 4px 7px;
+    width: fit-content;
+}
+
+.common-hover-content {
+    &:hover {
+        transform: scale(1.02, 1.02);
+        -webkit-transform: scale(1.02, 1.02);
+        -moz-transform: scale(1.02, 1.02);
+        -ms-transform: scale(1.02, 1.02);
+        -o-transform: scale(1.02, 1.02);
+        .image {
+            video {
+                opacity: 1;
+            }
+        }
+    }
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    -moz-transition: transform 0.5s;
+    -ms-transition: transform 0.5s;
+    -o-transition: transform 0.5s;
+}
+
+.common-video {
+    position: relative;
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transition: opacity 0.5s;
+        -webkit-transition: opacity 0.5s;
+        -moz-transition: opacity 0.5s;
+        -ms-transition: opacity 0.5s;
+        -o-transition: opacity 0.5s;
+    }
+}
+
+.container {
+    .recommend {
+        .icon {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            color: #000;
+            background-color: #0d6efd;
+            font-size: 8px;
+            margin-right: 5px;
+        }
+
+        .content {
+            video {
+                opacity: 0;
+                transition: opacity 0.5s;
+                -webkit-transition: opacity 0.5s;
+                -moz-transition: opacity 0.5s;
+                -ms-transition: opacity 0.5s;
+                -o-transition: opacity 0.5s;
+            }
+            &:hover {
+                transform: scale(1.02, 1.02);
+                -webkit-transform: scale(1.02, 1.02);
+                -moz-transform: scale(1.02, 1.02);
+                -ms-transform: scale(1.02, 1.02);
+                -o-transform: scale(1.02, 1.02);
+                video {
+                    opacity: 1;
+                }
+            }
+            .desc {
+                background-color: $lightBgColor;
+            }
+            .free {
+                width: fit-content;
+                padding: 5px 8px;
+                font-size: 12px;
+                top: 20px;
+                right: 8px;
+                background-color: $color;
+            }
+            transition: transform 0.4s;
+            -webkit-transition: transform 0.4s;
+            -moz-transition: transform 0.4s;
+            -ms-transition: transform 0.4s;
+            -o-transition: transform 0.4s;
+        }
+    }
+
+    .recently-added {
+        .content {
+            @extend .common-hover-content;
+            background-color: $lightBgColor;
+            .image {
+                width: 155px;
+                @extend .common-video;
+            }
+            .badge {
+                font-size: 10px;
+                color: $bgColor;
+                background-color: $fontColor;
+                width: fit-content;
+            }
+            .icons {
+                span {
+                    @extend .common-free;
+                }
+            }
+        }
+    }
+
+    .most-played {
+        .free {
+            @extend .common-free;
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+        }
+        .content {
+            @extend .common-hover-content;
+            .image {
+                @extend .common-video;
+            }
+        }
+    }
+
+    .community-recommendation {
+        .reco-content {
+            background-color: $darkBgColor;
+            .free {
+                @extend .common-free;
+                bottom: 5px;
+                right: 15px;
+            }
+            &:hover {
+                transform: scale(1.02, 1.02);
+                -webkit-transform: scale(1.02, 1.02);
+                -moz-transform: scale(1.02, 1.02);
+                -ms-transform: scale(1.02, 1.02);
+                -o-transform: scale(1.02, 1.02);
+            }
+            transition: transform 0.4s;
+            -webkit-transition: transform 0.4s;
+            -moz-transition: transform 0.4s;
+            -ms-transition: transform 0.4s;
+            -o-transition: transform 0.4s;
+        }
+    }
+    .more {
+        .row {
+            background-color: $lightBgColor;
+            .image {
+                img {
+                    border-top-left-radius: 6px;
+                    border-bottom-left-radius: 6px;
+                }
+            }
+            .desc{
+                p{
+                    line-height: 25px;
+                }
+                a{
+                    padding: 15px 20px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        .more {
+            img {
+                border-bottom-left-radius: 0px;
+                border-top-right-radius: 6px;
+            }
+        }
+    }
+}

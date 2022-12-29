@@ -1,0 +1,19 @@
+<app-loading-screen *ngIf="isLoading"></app-loading-screen>
+<section #scrollable>
+    <div class="container py-5">
+        <div class="row my-5">
+            <!-- <div class="col-lg-3 col-md-4 col-sm-6 mb-5" *ngFor="let item of items | slice :0 :count" > -->
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-5" *ngFor="let item of newGames">
+                <app-game-card [item]="item"></app-game-card>
+            </div>
+            <!-- <button class="btn btn-outline-secondary text-capitalize mx-auto" *ngIf="count < items.length"
+                (click)="count=count+20">see more</button> -->
+            <button class="btn btn-outline-secondary text-capitalize mx-auto"  *ngIf="newGames.length >= 20"
+                (click)="displayMoreGames()">see more</button>
+        </div>
+    </div>
+</section>
+
+<div class="scroll-to-top" (click)="scrollToTop()"  *ngIf="show">
+    <i class="fa-solid fa-jet-fighter fa-rotate-270 fa-xl"></i>
+</div>

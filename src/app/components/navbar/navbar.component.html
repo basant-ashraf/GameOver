@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top py-0">
+    <div class="container">
+        <a class="navbar-brand" routerLink="home">
+            <img src="assets/images/logo.png" width="70px" alt="">
+            <span class="text-capitalize">game over</span>
+        </a>
+        <button class="navbar-toggler rounded-circle border border-2 " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars icon fs-4"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="home" routerLinkActive="test">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/games/all" routerLinkActive="test">All</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-capitalize" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        platforms
+                        <i class="fa-solid fa-jet-fighter"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="/games/platforms/pc">pc</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/platforms/browser">browser</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-capitalize" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        sort-by
+                        <i class="fa-solid fa-jet-fighter"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="/games/sort-by/release-date">release-date</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/sort-by/popularity">popularity</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/sort-by/alphabetical">alphabetical</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/sort-by/relevance">relevance</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-capitalize" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        categories
+                        <i class="fa-solid fa-jet-fighter" ></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="/games/categories/racing">racing</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/categories/sports">sports</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/categories/social">social</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/categories/shooter">shooter</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/categories/open-world">open-world</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/categories/zombie">zombie</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/categories/fantasy">fantasy</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/categories/action-rpg">action-rpg</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/categories/action">action</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/categories/flight">flight</a></li>
+                        <li><a class="dropdown-item" routerLink="/games/categories/battle-royale">battle-royale</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item" *ngIf="!loggedIn">
+                    <a class="nav-link" routerLink="login" routerLinkActive="test">login</a>
+                </li>
+                <li class="nav-item" *ngIf="!loggedIn">
+                    <a class="nav-link btn btn-outline-info register-btn ms-2" routerLink="register" routerLinkActive="register">join free</a>
+                </li>
+                <li class="nav-item" *ngIf="loggedIn">
+                    <a class="nav-link btn btn-outline-info logout" (click)="logOut()">logOut</a>
+                </li>
+            </ul>    
+        </div>
+    </div>
+</nav>

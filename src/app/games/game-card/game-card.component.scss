@@ -1,0 +1,62 @@
+@import "../../../styles.scss";
+
+.content {
+    video {
+        opacity: 0;
+        transition: opacity 0.7s;
+        -webkit-transition: opacity 0.7s;
+        -moz-transition: opacity 0.7s;
+        -ms-transition: opacity 0.7s;
+        -o-transition: opacity 0.7s;
+    }
+    &:hover {
+        transform: scale(1.02, 1.02);
+        -webkit-transform: scale(1.02, 1.02);
+        -moz-transform: scale(1.02, 1.02);
+        -ms-transform: scale(1.02, 1.02);
+        -o-transform: scale(1.02, 1.02);
+        video {
+            opacity: 1;
+        }
+    }
+    transition: transform 0.2s;
+
+    .desc {
+        background-color: $lightBgColor;
+        position: relative;
+        .free {
+            width: fit-content;
+            padding: 5px 8px;
+            font-size: 12px;
+            position: absolute;
+            top: 20px;
+            right: 8px;
+            background-color: $color;
+        }
+        .icons {
+            .plus {
+                width: 15px;
+                height: 15px;
+                background-color: $fontColor;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                i {
+                    color: $lightBgColor;
+                }
+                border-radius: 2px;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                -ms-border-radius: 2px;
+                -o-border-radius: 2px;
+            }
+            .badge {
+                font-size: 12px;
+                color: $bgColor;
+                background-color: $fontColor;
+                width: fit-content;
+                padding: 1px 10px;
+            }
+        }
+    }
+}

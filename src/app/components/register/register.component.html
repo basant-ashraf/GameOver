@@ -1,0 +1,118 @@
+<section>
+    <div class="container py-5">
+        <div class="row my-5 shadow">
+            <div class="col-md-5 image m-0 p-0 rounded-start">
+                <img src="assets/images/game.jpg" class="w-100 h-100 rounded-start" alt="">
+            </div>
+            <div class="col-md-7 desc rounded-end">
+                <div class="content p-4">
+                    <h1 class="h4 text-capitalize text-center mb-4">create my account!</h1>
+                    <form action="" [formGroup]="registerForm" (ngSubmit)="formData(registerForm)">
+                        <div class="row px-2">
+                            <div class="col-sm-6 mb-3 px-0 pe-sm-2">
+                                <input type="text" formControlName="first_name" class="form-control w-100"
+                                    [ngClass]="registerForm.get('first_name')?.errors ? '':'is-valid'"
+                                    placeholder="first name">
+                                <ul class="alert p-0 ps-4 mb-1"
+                                    *ngIf="registerForm.get('first_name')?.errors && registerForm.get('first_name')?.value != null">
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('first_name')?.getError('required')">first name is
+                                        required!</li>
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('first_name')?.getError('pattern')">first name contains
+                                        letters only!</li>
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('first_name')?.getError('maxlength')">first name max
+                                        length is 15</li>
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('first_name')?.getError('minlength')">first name min
+                                        length is 3</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 mb-3 px-0 ps-sm-2">
+                                <input type="text" formControlName="last_name" class="form-control w-100"
+                                    [ngClass]="registerForm.get('last_name')?.errors ? '':'is-valid'"
+                                    placeholder="last name">
+                                <ul class="alert p-0 ps-4 mb-1"
+                                    *ngIf="registerForm.get('last_name')?.errors && registerForm.get('last_name')?.value != null">
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('last_name')?.getError('required')">last name is
+                                        required!</li>
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('last_name')?.getError('pattern')">last name contains
+                                        letters only!</li>
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('last_name')?.getError('maxlength')">last name max
+                                        length is 15</li>
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('last_name')?.getError('minlength')">last name min
+                                        length is 3</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mb-3 px-0">
+                            <input type="number" formControlName="age" class="form-control w-100"
+                                [ngClass]="registerForm.get('age')?.errors ? '':'is-valid'" placeholder="age">
+                            <ul class="alert p-0 ps-4 mb-1"
+                                *ngIf="registerForm.get('age')?.errors && registerForm.get('age')?.value != null">
+                                <li class="text-capitalize text-danger"
+                                    *ngIf="registerForm.get('age')?.getError('required')">age is required!</li>
+                                <li class="text-capitalize text-danger"
+                                    *ngIf="registerForm.get('age')?.getError('max')">max age is 90</li>
+                                <li class="text-capitalize text-danger"
+                                    *ngIf="registerForm.get('age')?.getError('min')">min age is 8</li>
+                            </ul>
+                        </div>
+                        <div class="mb-3 px-0">
+                            <input type="email" formControlName="email" class="form-control w-100"
+                                [ngClass]="registerForm.get('email')?.errors ? '':'is-valid'" placeholder="email">
+                            <ul class="alert p-0 ps-4 mb-1"
+                                *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.value != null">
+                                <li class="text-capitalize text-danger"
+                                    *ngIf="registerForm.get('email')?.getError('required')">email is required!</li>
+                                <li class="text-capitalize text-danger"
+                                    *ngIf="registerForm.get('email')?.getError('email')">invalid email!</li>
+                            </ul>
+                        </div>
+                        <div class="row px-2">
+                            <div class="col-sm-6 mb-3 px-0 pe-sm-2">
+                                <input type="password" formControlName="password" class="form-control w-100"
+                                    [ngClass]="registerForm.get('password')?.errors ? '':'is-valid'"
+                                    placeholder="password" (input)="checkPassword()">
+                                <ul class="alert p-0 ps-4 mb-1"
+                                    *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.value != null">
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('password')?.getError('required')">password is required!
+                                    </li>
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('password')?.getError('minlength')">password min length
+                                        is 5</li>
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('password')?.getError('maxlength')">password max length
+                                        is 20</li>
+                                    <li class="text-capitalize text-danger"
+                                        *ngIf="registerForm.get('password')?.getError('pattern')">password should
+                                        contains at least one number, uppercase ,lowercase letter and special character
+                                        (!@#$%^&*()_+)</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 mb-3 px-0 ps-sm-2">
+                                <input type="password" class="form-control w-100" [ngClass]="equal ? 'is-valid':''"
+                                    placeholder="confirm password" [(ngModel)]="someValue" [ngModelOptions]="{standalone: true}" (input)="checkPassword()">
+                                <ul class="alert p-0 ps-4 mb-1" *ngIf="!equal  && registerForm.get('password')?.touched">
+                                        <li class="text-capitalize text-danger">password is not equal!</li>
+                                    </ul>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary text-capitalize w-100" type="submit" [disabled]="registerForm.invalid || !equal || isLoading">
+                            <span *ngIf="!isLoading">create account</span>
+                            <i class="fa-solid fa-spinner fa-spin" *ngIf="isLoading"></i>
+                        </button>
+                        <p class="text-muted text-center policy py-2 small">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" class="text-muted">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" class="text-muted">Terms of Service</a> apply.</p>
+                        <p class="small text-center">Already a member? <a class="text-capitalize login text-decoration-none" routerLink="/login"> log in<i class="fa-solid fa-chevron-right"></i></a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

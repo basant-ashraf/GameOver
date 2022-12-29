@@ -1,0 +1,112 @@
+<app-loading-screen *ngIf="isLoading"></app-loading-screen>
+<section
+    style="background-image:url('https://www.freetogame.com/g/{{gameDetails.id}}/background.jpg'); background-repeat: no-repeat;background-position: center; background-size: cover;">
+    <div class="contain position-relative" (mouseenter)="on(vid)" (mouseleave)="off(vid)">
+        <div class="container py-5">
+            <div class="row py-3">
+                <div class="col-md-4 mb-md-0 mb-5">
+                    <div class="content sticky">
+                        <div class="position-relative">
+                            <img [src]="gameDetails.thumbnail" class="w-100 rounded-2" alt="">
+                            <video loop muted="true" preload="none"
+                                class="position-absolute top-0 start-0 w-100 h-100 rounded-2"
+                                src="https://www.freetogame.com/g/{{gameDetails.id}}/videoplayback.webm" #vid>
+                            </video>
+                        </div>
+                        <div class="d-flex mt-3 align-items-center justify-content-between">
+                            <span
+                                class="d-block text-uppercase text-white fw-bold free small rounded-2 me-2">free</span>
+                            <a [href]="gameDetails.game_url" target="_blank"
+                                class="text-white text-uppercase text-decoration-none rounded-2 flex-grow-1 text-center">play
+                                now <i class="fa-solid fa-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <h1 class="text-capitalize">{{gameDetails.title}}</h1>
+                    <p>
+                        <span class="text-capitalize fw-bold">status: </span>
+                        <span class="text-capitalize">{{gameDetails.status}}</span>
+                    </p>
+                    <div class="about">
+                        <h3 class="text-capitalize">about {{gameDetails.title}}</h3>
+                        <div [ngStyle]="{'height': !show ? '78px':'auto','overflow': !show ?'hidden':'auto'}">
+                            <p *ngFor="let paragraph of paragraphs" class="mb-2">{{paragraph}}</p>
+                        </div>
+                        <p class="fw-bold text-capitalize read-more" (click)="click()">read {{!show ? 'more':'less'}}
+                        </p>
+                    </div>
+                    <div class="info my-5">
+                        <h3 class="text-capitalize mb-3">additional information</h3>
+                        <div class="row">
+                            <div class="col-md-4 col-6 mb-2">
+                                <h5 class="text-capitalize mb-0">title</h5>
+                                <p class="text-capitalize">{{gameDetails.title}}</p>
+                            </div>
+                            <div class="col-md-4 col-6 mb-2">
+                                <h5 class="text-capitalize mb-0">developer</h5>
+                                <p class="text-capitalize">{{gameDetails.developer}}</p>
+                            </div>
+                            <div class="col-md-4 col-6 mb-2">
+                                <h5 class="text-capitalize mb-0">publisher</h5>
+                                <p class="text-capitalize">{{gameDetails.publisher}}</p>
+                            </div>
+                            <div class="col-md-4 col-6 mb-2">
+                                <h5 class="text-capitalize mb-0">release date</h5>
+                                <p class="text-capitalize">{{gameDetails.release_date}}</p>
+                            </div>
+                            <div class="col-md-4 col-6 mb-2">
+                                <h5 class="text-capitalize mb-0">genre</h5>
+                                <p class="text-capitalize">{{gameDetails.genre}}</p>
+                            </div>
+                            <div class="col-md-4 col-6 mb-2">
+                                <h5 class="text-capitalize mb-0">platform</h5>
+                                <p class="text-capitalize">
+                                    <i class="fa-brands fa-windows" *ngIf="gameDetails.platform == 'Windows'"></i>
+                                    <i class="fa-solid fa-window-maximize"
+                                        *ngIf="gameDetails.platform == 'Web Browser'"></i>
+                                    {{gameDetails.platform}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screenshot mb-5" *ngIf="gameDetails.screenshots != ''">
+                        <h3 class="text-capitalize mb-3">{{gameDetails.title}} screenshots</h3>
+                        <owl-carousel-o [options]="customOptions">
+                            <ng-container>
+                                <ng-template carouselSlide *ngFor="let image of gameDetails.screenshots">
+                                    <img [src]="image.image" alt="">
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
+                    </div>
+                    <div class="requirements" *ngIf="gameDetails.minimum_system_requirements != '' && gameDetails.minimum_system_requirements != null && gameDetails.minimum_system_requirements.graphics != null">
+                        <h3 class="text-capitalize mb-3">minimum system requirements</h3>
+                        <div class="row">
+                            <div class="col-lg-6 mb-1">
+                                <h6 class="text-uppercase mb-1">graphic</h6>
+                                <p class="text-white">{{gameDetails.minimum_system_requirements.graphics}}</p>
+                            </div>
+                            <div class="col-lg-6 mb-1">
+                                <h6 class="text-uppercase mb-1">memory</h6>
+                                <p class="text-white">{{gameDetails.minimum_system_requirements.memory}}</p>
+                            </div>
+                            <div class="col-lg-6 mb-1">
+                                <h6 class="text-uppercase mb-1">os</h6>
+                                <p class="text-white">{{gameDetails.minimum_system_requirements.os}}</p>
+                            </div>
+                            <div class="col-lg-6 mb-1">
+                                <h6 class="text-uppercase mb-1">processor</h6>
+                                <p class="text-white">{{gameDetails.minimum_system_requirements.processor}}</p>
+                            </div>
+                            <div class="col-lg-6 mb-1">
+                                <h6 class="text-uppercase mb-1">storage</h6>
+                                <p class="text-white">{{gameDetails.minimum_system_requirements.storage}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

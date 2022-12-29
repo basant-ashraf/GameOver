@@ -1,0 +1,125 @@
+<app-loading-screen *ngIf="isLoading"></app-loading-screen>
+<div class="scroll-to-top" (click)="scrollToTop()"  *ngIf="show">
+    <i class="fa-solid fa-jet-fighter fa-rotate-270 fa-xl"></i>
+</div>
+<section class="py-5">
+    <div class="header text-center py-5 ">
+        <h1 class="h2 text-capitalize pt-4">Find & track the best <span>free-to-play</span> games!</h1>
+        <p class="small lead">Track what you've played and search for what to play next! Plus get free premium loot!</p>
+        <a class="btn btn-primary p-3 start me-2" routerLink="/register" *ngIf="!isLogged"><span class="text-uppercase fw-bold"> get started</span> <span class="small"> it's free</span></a>
+        <a class="text-uppercase btn btn-outline-secondary p-3 browse" routerLink="/games/all">browse games</a>
+    </div>
+    <div class="container my-5">
+        <div class="recommend">
+            <h2 class="h4 text-capitalize"> <i class="fa-solid fa-robot"></i> Personalized Recommendations</h2>
+            <div class="small text-primary d-flex align-items-center" *ngIf="!isLogged">
+                <div class="icon d-flex justify-content-center align-items-center">
+                    <i class="fa-solid fa-question"></i>
+                </div>
+                <span> Log In to view your personalized recommendations!</span>
+            </div>
+            <div>
+                <div class="row justify-content-center mt-3">
+                    <div class="col-lg-4 col-md-6 pb-5" *ngFor="let game of recommendedGames">
+                        <div class="content shadow" (mouseenter)="on(vid)" (mouseleave)="off(vid)" [routerLink]="['/game-details',game.id]">
+                            <div class="image position-relative">
+                                <img [src]="game.thumbnail" class="w-100 rounded-top" alt="">
+                                <video class="w-100 rounded-top position-absolute start-0 top-0 " loop preload="none"
+                                    #vid>
+                                    <source src="https://www.freetogame.com/g/{{game.id}}/videoplayback.webm">
+                                </video>
+                            </div>
+                            <div class="desc p-4 d-flex justify-content-between rounded-bottom">
+                                <h3 class="h5 text-capitalize mb-0">{{game.title}}</h3>
+                                <span class="d-block text-uppercase fw-bold text-white free rounded-2">free</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-7 recently-added">
+                <h2 class="h4 text-capitalize mb-4">recently added</h2>
+                <div class="content d-flex p-3 align-items-center rounded-2 shadow mb-4" (mouseenter)="on(vid)"
+                    (mouseleave)="off(vid)" *ngFor="let recent of recentlyAdded" [routerLink]="['/game-details',recent.id]">
+                    <div class="image">
+                        <img [src]="recent.thumbnail" alt="" class="w-100">
+                        <video loop preload="none" class="w-100" #vid>
+                            <source src="https://www.freetogame.com/g/{{recent.id}}/videoplayback.webm">
+                        </video>
+                    </div>
+                    <div class="desc ps-3 flex-grow-1">
+                        <h3 class="h5 text-capitalize">{{recent.title}}</h3>
+                        <p class="small"> {{recent.short_description | limitLetters : 53}} </p>
+                        <span class="badge d-block text-capitalize rounded-pill">{{recent.genre}}</span>
+                    </div>
+                    <div class="icons d-flex align-items-center">
+                        <i class="fa-brands fa-windows" *ngIf="recent.platform =='PC (Windows)'"></i>
+                        <i class="fa-solid fa-window-maximize" *ngIf="recent.platform =='Web Browser'"></i>
+                        <span class="text-uppercase text-white d-block rounded-2 fw-bold ms-1">free</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 most-played">
+                <h2 class="h4 text-capitalize mb-4">most played today</h2>
+                <div class="content pb-4" *ngFor="let most of mostPlayed" [routerLink]="['/game-details',most.id]">
+                    <div class="image position-relative shadow rounded-2" (mouseenter)="on(vid)"
+                        (mouseleave)="off(vid)">
+                        <img [src]="most.thumbnail" class="w-100 rounded-2" alt="">
+                        <video loop preload="none" class="w-100 rounded-2" #vid>
+                            <source src="https://www.freetogame.com/g/{{most.id}}/videoplayback.webm">
+                        </video>
+                        <span class="d-block text-uppercase fw-bold text-white free rounded-2">free</span>
+                    </div>
+
+                </div>
+            </div>
+            <a routerLink="/games/all" class="btn btn-outline-secondary text-capitalize mx-auto">more games <i
+                    class="fa-solid fa-chevron-right"></i></a>
+        </div>
+        <div class="community-recommendation my-5">
+            <h2 class="h4 text-capitalize mb-4">community recommendations</h2>
+            <div class="row">
+                <div class="col-lg-6 pb-5" *ngFor="let com of communityRecommendations" [routerLink]="['/game-details',com.id]">
+                    <div class="reco-content rounded-2 shadow p-4">
+                        <div class="row">
+                            <div class="image col-md-6 position-relative">
+                                <img [src]="com.thumbnail" class="w-100 rounded-2" alt="">
+                                <h3 class="h5 text-capitalize pt-2">{{com.title}}</h3>
+                                <span
+                                    class="d-block text-uppercase fw-bold text-white free rounded-2 position-absolute">free</span>
+                            </div>
+                            <div class="desc col-md-6 mt-3 mt-md-0 d-flex align-items-center">
+                                <p class="small">{{com.short_description | limitLetters: 135}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="more" *ngIf="!isLogged">
+            <div class="row rounded-2">
+                <div class="image col-md-5 p-0 d-flex align-items-center">
+                    <img src="assets/images/game.jpg" class="w-100" alt="">
+                </div>
+                <div class="desc col-md-7 p-4 d-flex align-items-center">
+                    <div class="desc-inner">
+                        <h2 class="h4 text-capitalize mb-3">More Fun and More Rewarding!</h2>
+                        <p class="small">We are FreeToGame, a new gaming platform that brings all the best Free-to-Play
+                            Multiplayer Games and MMO Games into one place while rewarding gamers with free premium loot
+                            and
+                            exlusive perks. Plus maintain your own games library, track what you've played and search
+                            for
+                            what to play next!</p>
+                        <a routerLink="/register" class="btn btn-primary text-capitalize text-white">join now <i class="fa-solid fa-person-rifle"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

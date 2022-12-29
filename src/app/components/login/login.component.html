@@ -1,0 +1,35 @@
+<section>
+    <div class="container py-5">
+        <div class="row my-5 shadow">
+            <div class="col-md-6 image p-0">
+                <img src="assets/images/game.jpg" class="w-100 h-100 rounded-start" alt="">
+            </div>
+            <div class="col-md-6 desc text-center rounded-end">
+                <div class="content p-5">
+                    <img src="assets/images/logo.png" width="100px" class="mb-3" alt="">
+                    <h1 class="h4 text-center text-capitalize mb-4">Log in to GameOver</h1>
+                    <form action="" [formGroup]="loginForm" (ngSubmit)="formData(loginForm)">
+                        <div class="email">
+                            <input type="email" formControlName="email" class="form-control" placeholder="email">
+                            <ul class="alert text-danger text-start ms-2 pt-1 pb-0" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+                                <li class="text-capitalize small">email is required!</li>
+                            </ul>
+                        </div>
+                        <div class="password mt-3">
+                            <input type="password" formControlName="password" class="form-control" placeholder="password">
+                            <ul class="alert text-danger text-start ms-2 pt-1 pb-0" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+                                <li class="text-capitalize small">password is required!</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-primary text-capitalize w-100 my-3" type="submit" [disabled]="loginForm.invalid || isLoading">
+                            <span *ngIf="!isLoading">login</span>
+                            <i class="fa-solid fa-spinner fa-spin" *ngIf="isLoading"></i>
+                        </button>
+                    </form>
+                    <p class="mb-1 mt-3 color"><a class="small text-capitalize text-decoration-none">forget password?</a></p>
+                    <p class="small text-muted text-capitalize color">not a member yet? <a routerLink="/register" class="text-decoration-none"> create account<i class="fa-solid fa-chevron-right"></i></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
